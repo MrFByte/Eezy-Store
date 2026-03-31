@@ -62,8 +62,8 @@ class LoginSerializer(serializers.Serializer):
             if not user.check_password(password):
                 raise serializers.ValidationError({'error': "password-mismatch", "message": "Incorrect password."})
             if not user.is_active:
-                if not user.last_login:
-                    raise serializers.ValidationError({"error": "account-not-activated", "message": "Your account is not activated yet. Please check your email."})
+                # if not user.last_login:
+                    # raise serializers.ValidationError({"error": "account-not-activated", "message": "Your account is not activated yet. Please check your email."})
                 raise serializers.ValidationError({"error": "account-blocked", "message": "Your account is blocked by admin. Please contact support."})
             attrs['user'] = user
             return attrs
