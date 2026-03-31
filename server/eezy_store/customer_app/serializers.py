@@ -39,7 +39,7 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data.pop('password_confirm')
         user = User(**validated_data)
         user.set_password(validated_data['password'])
-        user.is_active = False
+        user.is_active = True
         user.save()
         
         customer_group,_ = Group.objects.get_or_create(name='Customer')
